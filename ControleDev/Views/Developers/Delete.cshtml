@@ -1,0 +1,38 @@
+﻿@model ControleDev.Models.Developer
+@{
+    ViewData["Title"] = "Deseja realmente excluir?";
+}
+
+<h3>@ViewData["Title"]</h3>
+
+<div>
+
+    <hr/>
+    <dl class="row">
+        <dt class="col-1">
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+        <dd class="col-11">
+            @Html.DisplayFor(model => model.name)
+        </dd>
+        <dt class="col-1">
+            @Html.DisplayNameFor(model => model.Login)
+        </dt>
+        <dd class="col-11">
+            @Html.DisplayFor(model => model.Login)
+        </dd>
+        <dt class="col-1">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class="col-11">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="id" />
+        <input type="submit" value="Deletar" class="btn btn-danger" />
+        <a asp-action="Index">Voltar</a>
+    </form>
+
+</div>

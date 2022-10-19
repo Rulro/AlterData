@@ -1,0 +1,93 @@
+﻿@model IEnumerable<ControleDev.Models.Developer>
+
+@{
+    ViewData["Title"] = "Desenvolvedores";
+}
+
+<h4>Desenvolvedores</h4>
+<br />
+<p>
+    <a asp-action="Create" class="btn btn-primary">Novo Cadastro</a>
+</p>
+<form asp-controller="Developers" asp-action="Index">
+    <p>
+        Informe o Id: <input type="number" maxlength="3" name="SearchString" value=@ViewData["searchString"] />
+        <input type="submit" value="Buscar" />
+    </p>
+</form>
+
+<form asp-controller="Developers" asp-action="Index" class="row">
+    <div class="container-fluid">
+        <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+            <!--<label for="minDate" class="col-1">Data Inicial</label>-->
+            Data inicial:&nbsp;<input type="date" name="minDate" value=@ViewData["minDate"] />
+        </div>
+        <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+            <!--<label for="maxDate" class="col-1">Data Final</label>-->
+            Data final:&nbsp;<input type="date" name="maxDate" value=@ViewData["maxDate"] />
+            &nbsp;&nbsp;<input type="submit" value="Filtrar" />
+        </div>
+    </div>
+    
+</form>
+<br />
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedAt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Avatar)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Squad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Login)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedAt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Avatar)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Squad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Login)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>            
+            <td>
+                    @Html.ActionLink("Editar", "Edit", new { id=item.id }, new {@class= "text-primary fw-bold"}) |
+                    @Html.ActionLink("Deletar", "Delete", new { id=item.id }, new {@class= "text-danger fw-bold"})
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
